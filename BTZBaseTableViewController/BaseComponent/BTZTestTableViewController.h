@@ -6,8 +6,8 @@
 //  Copyright © 2018年 com.3wchina. All rights reserved.
 //
 
-#import "BTZBaseTbaleViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface BTZTestTableViewController : BTZBaseTbaleViewController
+@interface BTZTestTableViewController : UIViewController
 
 @end

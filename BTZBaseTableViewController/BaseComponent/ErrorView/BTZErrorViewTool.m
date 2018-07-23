@@ -8,13 +8,14 @@
 
 #import "BTZErrorViewTool.h"
 #import "BTZErrorView.h"
+#import "AppDelegate.h"
 
 
 @interface BTZErrorViewTool ()
 
 
 @property (nonatomic, assign) BTZErrorViewType errorType;
-@property (nonatomic, assign) BOOL isNetworkError;
+
 @property (nonatomic, assign) CGRect frame;
 @property (nonatomic, strong) BTZErrorView *errorView;
 
@@ -27,18 +28,11 @@
 {
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netChangeNotReachable) name:@"NetChangeNotReachable" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netChangeAvliable) name:@"NetChangeAvliable" object:nil];
     }
     return self;
 }
 
-- (void)netChangeNotReachable {
-    self.isNetworkError = YES;
-}
-- (void)netChangeAvliable {
-    self.isNetworkError = NO;
-}
+
 
 - (void)getErrorViewWithFrame:(CGRect)frame type:(BTZErrorViewType)type {
     self.errorType = type;
@@ -46,40 +40,42 @@
 }
 
 - (UIView *)getView {
-
+    
     return self.errorView;
 }
 
 
 - (void)getImageNameStrAndContent:(BTZErrorViewType)type {
-    if (self.isNetworkError) {
-        type = BTZErrorViewTypeNetwork;
-    }
-    NSString *imageNameStr = @"hybrid_overlay";
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if (!appDelegate.NetChangeReachable) {
+//        type = BTZErrorViewTypeNetwork;
+//    }
+    NSString *imageNameStr = @"orderMarket";
     NSString *content = @"暂无数据";
     NSString *buttonStr = @"去逛逛";
     BOOL showButton = NO;
     switch (type) {
-            case BTZErrorViewTypeOrderList:
-            imageNameStr = @"hybrid_overlay";
+        case BTZErrorViewTypeOrderList:
+            imageNameStr = @"orderMarket";
             content = @"您还没有相关订单呢";
+            showButton = YES;
             break;
             
-            case BTZErrorViewTypeCoupon:
-            imageNameStr = @"hybrid_overlay";
+        case BTZErrorViewTypeCoupon:
+            imageNameStr = @"没有优惠券";
             content = @"当前没有可用优惠券";
             break;
             
             
-            case BTZErrorViewTypeRepayment:
-            imageNameStr = @"hybrid_overlay";
+        case BTZErrorViewTypeRepayment:
+            imageNameStr = @"orderMarket";
             content = @"暂无还款记录";
             showButton = YES;
             break;
             
-            case BTZErrorViewTypeNetwork:
-            imageNameStr = @"hybrid_overlay@2x";
-            content = @"暂无还款记录";
+        case BTZErrorViewTypeNetwork:
+            imageNameStr = @"无网络";
+            content = @"暂无数据";
             showButton = YES;
             buttonStr = @"刷新";
             break;
@@ -104,6 +100,11 @@
                 weakself.clickAction();
             }
         };
+        _errorView.serviceBlock = ^{
+            if (weakself.noServiceAction) {
+                weakself.noServiceAction();
+            }
+        };
     }
     return _errorView;
 }
@@ -118,8 +119,8 @@
 
 - (void)hiddenErrorView {
     self.errorView.hidden = YES;
-//    [self.errorView removeFromSuperview];
-//    self.errorView = nil;
+    //    [self.errorView removeFromSuperview];
+    //    self.errorView = nil;
 }
 
 

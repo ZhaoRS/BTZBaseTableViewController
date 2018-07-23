@@ -6,9 +6,10 @@
 //  Copyright © 2018年 Rathen. All rights reserved.
 //
 
-#import "BTZBaseTableViewCell.h"
+#import <UIKit/UIKit.h>
+#import "BTZBaseTableViewCellProtocol.h"
 
-@interface BTZTestXibTableViewCell : BTZBaseTableViewCell
+@interface BTZTestXibTableViewCell : UITableViewCell <BTZBaseTableViewCellProtocol>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

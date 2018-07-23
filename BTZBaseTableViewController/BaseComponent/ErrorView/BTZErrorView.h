@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^BTZErrorViewBlock)();
+typedef void(^BTZErrorViewNoServiceBlock)(void);
 
 @interface BTZErrorView : UIView
 
 - (void)changeErrorImageView:(NSString *)imageString content:(NSString *)content showButton:(BOOL)buttonShow buttonString:(NSString *)buttonStrin;
 
 @property (nonatomic, copy) BTZErrorViewBlock clickBlock;
+
+@property (nonatomic, copy) BTZErrorViewNoServiceBlock serviceBlock;
 
 @end

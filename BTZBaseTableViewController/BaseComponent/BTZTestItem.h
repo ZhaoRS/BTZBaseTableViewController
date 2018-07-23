@@ -6,9 +6,11 @@
 //  Copyright © 2018年 com.3wchina. All rights reserved.
 //
 
-#import "BTZBaseItem.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "BTZBaseItemProtocol.h"
 
-@interface BTZTestItem : BTZBaseItem
+@interface BTZTestItem : NSObject <BTZBaseItemProtocol>
 
 
 @property (nonatomic, assign) int type;

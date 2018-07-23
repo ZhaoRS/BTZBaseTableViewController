@@ -7,10 +7,10 @@
 //
 
 #import "BTZBaseTbaleViewController.h"
-#import "BTZBaseItem.h"
 #import "BTZBaseTableViewCell.h"
 #import "BTZErrorViewTool.h"
 #import "MJRefresh.h"
+#import "BTZBaseItemProtocol.h"
 
 @interface BTZBaseTbaleViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -198,19 +198,19 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BTZBaseItem *item = [self.tbDataArray objectAtIndex:indexPath.row];
-    return [item cellHeight];
+    NSObject<BTZBaseItemProtocol> *item = [self.tbDataArray objectAtIndex:indexPath.row];
+    return [item bt_cellHeight];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BTZBaseItem *item = [self.tbDataArray objectAtIndex:indexPath.row];
-    NSString *cellIdentification = [item cellName];
+    NSObject<BTZBaseItemProtocol> *item = [self.tbDataArray objectAtIndex:indexPath.row];
+    NSString *cellIdentification = [item bt_cellClassName];
     
     BTZBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentification];
     if (!cell) {
-        if (item.isXibCell) {//是XIB
-            cell = [[[NSBundle mainBundle] loadNibNamed:[item cellName] owner:self options:0] objectAtIndex:0];
+        if ([item bt_isXIB]) {//是XIB
+            cell = [[[NSBundle mainBundle] loadNibNamed:[item bt_cellClassName] owner:self options:0] objectAtIndex:0];
         } else {//不是XIB
             if (!cellIdentification) {
                 return nil;
@@ -221,7 +221,7 @@
         
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if ([item isKindOfClass:[BTZBaseItem class]]) {
+    if ([item conformsToProtocol:@protocol(BTZBaseItemProtocol)]) {
         [cell updateCell:item];
     }
     return cell;

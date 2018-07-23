@@ -8,6 +8,7 @@
 
 #import "BTZTestTableViewController.h"
 #import "BTZTestItem.h"
+#import "UIViewController+BaseTableContorller.h"
 
 @interface BTZTestTableViewController ()
 
@@ -18,69 +19,83 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+    [self loadTableView];
+    [self loadTbDataArray];
     [self loadNewData];
-    [self setLoadMore];
-    [self setMJRefresh];
-    [self getErrorViewType:BTZErrorViewTypeCoupon frame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+//    [self setLoadMore];
+//    [self setMJRefresh];
+//    [self getErrorViewType:BTZErrorViewTypeCoupon frame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
 
 }
 
-- (NSString *)getTableRequestUrl {
-    return @"这里填写网络请求的URL";
-}
-
-- (NSDictionary *)getTableRequestParamer {
-    //这里填写参数
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setValue:@(self.currentPage) forKey:@"currentPage"];
-    [dict setValue:@(self.pageSize) forKey:@"pageSize"];
-    [dict setValue:@2 forKey:@"type"];
-    return dict;
-}
+//- (NSString *)getTableRequestUrl {
+//    return @"这里填写网络请求的URL";
+//}
+//
+//- (NSDictionary *)getTableRequestParamer {
+//    //这里填写参数
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    [dict setValue:@(self.currentPage) forKey:@"currentPage"];
+//    [dict setValue:@(self.pageSize) forKey:@"pageSize"];
+//    [dict setValue:@2 forKey:@"type"];
+//    return dict;
+//}
 
 - (void)loadNewData {
     //1.loading
     //2.调用这个方法
-    [self loadNewDataWithRequest:^(NSString *url, NSDictionary *parameters) {
-        __weak typeof(self) weakSelf = self;
-        //这里使用网络请求
-//        [HSHTTPClient request:POST URLString:url parameters:parameters success:^(id json) {
-//            NSString *code = json[@"code"];
-//            NSString *msg = json[@"msg"];
-//            NSDictionary *result = json[@"result"];
-//            if (code.intValue == 100000) {
-//                NSArray *array = [result objectForKey:@"data"];
-//                if (array.count > 0) {
-//                    NSArray *dataArray = [BTZTestItem mj_objectArrayWithKeyValuesArray:[result objectForKey:@"data"]];
-//                    [weakSelf serviceWithResult:dataArray operation:nil];
-//                }
-//
-//            }else {
-//
+//    [self loadNewDataWithRequest:^(NSString *url, NSDictionary *parameters) {
+//        __weak typeof(self) weakSelf = self;
+//        //这里使用网络请求
+////        [HSHTTPClient request:POST URLString:url parameters:parameters success:^(id json) {
+////            NSString *code = json[@"code"];
+////            NSString *msg = json[@"msg"];
+////            NSDictionary *result = json[@"result"];
+////            if (code.intValue == 100000) {
+////                NSArray *array = [result objectForKey:@"data"];
+////                if (array.count > 0) {
+////                    NSArray *dataArray = [BTZTestItem mj_objectArrayWithKeyValuesArray:[result objectForKey:@"data"]];
+////                    [weakSelf serviceWithResult:dataArray operation:nil];
+////                }
+////
+////            }else {
+////
+////            }
+////
+////
+////        } failure:^(NSError *error) {
+////            [self serviceFailedWithError:error operation:nil];
+////        }];
+//        NSMutableArray *array = [[NSMutableArray alloc] init];
+//        for (int i = 0; i< 10; i ++) {
+//            BTZTestItem *item = [[BTZTestItem alloc] init];
+//            if (i % 2 == 0) {
+//                item.type = 1;
+//            } else {
+//                item.type = 2;
 //            }
 //
+//            [array addObject:item];
+//        }
+//        [weakSelf serviceWithResult:array operation:nil];
 //
-//        } failure:^(NSError *error) {
-//            [self serviceFailedWithError:error operation:nil];
-//        }];
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (int i = 0; i< 10; i ++) {
-            BTZTestItem *item = [[BTZTestItem alloc] init];
-            if (i % 2 == 0) {
-                item.type = 1;
-            } else {
-                item.type = 2;
-            }
-            
-            [array addObject:item];
+//    }];
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i< 10; i ++) {
+        BTZTestItem *item = [[BTZTestItem alloc] init];
+        if (i % 2 == 0) {
+            item.type = 1;
+        } else {
+            item.type = 2;
         }
-        [weakSelf serviceWithResult:array operation:nil];
-    
-    }];
-    
         
+        [self.tbDataArray addObject:item];
+    }
+    [self.mainTbaleView reloadData];
+    
+
     
 }
 

@@ -49,11 +49,18 @@
     self.button.hidden = !buttonShow;
     [self.button setTitle:buttonString forState:UIControlStateNormal];
 }
-- (IBAction)clickAction:(id)sender {
-    
-    if (self.clickBlock) {
-        self.clickBlock();
+- (IBAction)clickAction:(UIButton *)sender {
+    if ([sender.titleLabel.text isEqualToString:@"去逛逛"]) {
+        if (self.clickBlock) {
+            self.clickBlock();
+        }
+    } else {
+        if (self.serviceBlock) {
+            self.serviceBlock();
+        }
     }
+    
+    
 }
 
 @end

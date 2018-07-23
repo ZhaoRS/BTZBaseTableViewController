@@ -8,30 +8,29 @@
 
 #import "BTZTestItem.h"
 
+
 @implementation BTZTestItem
 
-- (void)setType:(int)type {
-    switch (type) {
-        case 1:
-            {
-                self.titleStr = @"这是XIB";
-                self.cellName = @"BTZTestXibTableViewCell";
-                self.cellHeight = 50;
-                self.isXibCell = YES;
-            }
-            break;
-        case 2:
-        {
-            self.titleStr = @"这是纯代码";
-            self.cellName = @"BTZTestTableViewCell";
-            self.cellHeight = 60;
-            self.isXibCell = NO;
-        }
-            break;
-            
-        default:
-            break;
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.titleStr = @"xib";
+        
     }
+    return self;
 }
 
+
+- (CGFloat)bt_cellHeight {
+    return 100.f;
+}
+
+- (NSString *)bt_cellClassName {
+    return @"BTZTestXibTableViewCell";
+}
+
+- (BOOL)bt_isXIB {
+    return YES;
+}
 @end

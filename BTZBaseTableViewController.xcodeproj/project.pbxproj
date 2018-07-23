@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840721AC20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = 840721AB20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.m */; };
+		8460682720E4DC6600080AAA /* UIViewController+BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460682620E4DC6600080AAA /* UIViewController+BaseController.m */; };
 		84AA534120D0B4C800ED8A94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA534020D0B4C800ED8A94 /* AppDelegate.m */; };
 		84AA534420D0B4C800ED8A94 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA534320D0B4C800ED8A94 /* ViewController.m */; };
 		84AA534720D0B4C800ED8A94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AA534520D0B4C800ED8A94 /* Main.storyboard */; };
@@ -70,6 +72,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840721A920DCA91900BF9F0C /* BTZBaseItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTZBaseItemProtocol.h; sourceTree = "<group>"; };
+		840721AA20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BaseTableContorller.h"; sourceTree = "<group>"; };
+		840721AB20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BaseTableContorller.m"; sourceTree = "<group>"; };
+		8460682420E4CAC200080AAA /* BTZBaseTableViewCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTZBaseTableViewCellProtocol.h; sourceTree = "<group>"; };
+		8460682520E4DC6600080AAA /* UIViewController+BaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BaseController.h"; sourceTree = "<group>"; };
+		8460682620E4DC6600080AAA /* UIViewController+BaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BaseController.m"; sourceTree = "<group>"; };
 		84AA533C20D0B4C800ED8A94 /* BTZBaseTableViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTZBaseTableViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AA533F20D0B4C800ED8A94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84AA534020D0B4C800ED8A94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -243,6 +251,8 @@
 				84AA537220D0B70200ED8A94 /* BTZBaseComponentHeader.h */,
 				84AA537320D0B70200ED8A94 /* BTZBaseGroupItem.h */,
 				84AA537420D0B70200ED8A94 /* BTZBaseGroupItem.m */,
+				840721A920DCA91900BF9F0C /* BTZBaseItemProtocol.h */,
+				8460682420E4CAC200080AAA /* BTZBaseTableViewCellProtocol.h */,
 				84AA537620D0B70200ED8A94 /* BTZBaseItem.h */,
 				84AA537720D0B70200ED8A94 /* BTZBaseItem.m */,
 				84AA537920D0B70200ED8A94 /* BTZBaseTableGroupViewController.h */,
@@ -251,6 +261,10 @@
 				84AA537C20D0B70200ED8A94 /* BTZBaseTableViewCell.m */,
 				84AA537F20D0B70200ED8A94 /* BTZBaseTbaleViewController.h */,
 				84AA538020D0B70200ED8A94 /* BTZBaseTbaleViewController.m */,
+				840721AA20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.h */,
+				840721AB20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.m */,
+				8460682520E4DC6600080AAA /* UIViewController+BaseController.h */,
+				8460682620E4DC6600080AAA /* UIViewController+BaseController.m */,
 				84AA538120D0B70200ED8A94 /* BTZTestItem.h */,
 				84AA538220D0B70200ED8A94 /* BTZTestItem.m */,
 				84AA538320D0B70200ED8A94 /* BTZTestTableViewCell.h */,
@@ -516,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840721AC20DCCA1D00BF9F0C /* UIViewController+BaseTableContorller.m in Sources */,
 				84AA539520D0B70200ED8A94 /* BTZTestTableViewCell.m in Sources */,
 				84AA53DE20D0B7D300ED8A94 /* MJRefreshAutoNormalFooter.m in Sources */,
 				84AA53DF20D0B7D300ED8A94 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -529,6 +544,7 @@
 				84AA53E320D0B7D300ED8A94 /* MJRefreshGifHeader.m in Sources */,
 				84AA539120D0B70200ED8A94 /* BTZBaseTableViewCell.m in Sources */,
 				84AA53F020D0B97E00ED8A94 /* BTZTestXibTableViewCell.m in Sources */,
+				8460682720E4DC6600080AAA /* UIViewController+BaseController.m in Sources */,
 				84AA534420D0B4C800ED8A94 /* ViewController.m in Sources */,
 				84AA53A220D0B77100ED8A94 /* BTZErrorViewTool.m in Sources */,
 				84AA53DB20D0B7D300ED8A94 /* MJRefreshFooter.m in Sources */,
@@ -725,7 +741,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jz.BTZBaseTableViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = Rathen.BTZBaseTableViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -743,7 +759,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jz.BTZBaseTableViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = Rathen.BTZBaseTableViewController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

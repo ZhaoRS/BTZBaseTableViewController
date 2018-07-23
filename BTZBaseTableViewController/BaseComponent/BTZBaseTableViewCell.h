@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BTZBaseItem.h"
+#import "BTZBaseItemProtocol.h"
 
 @interface BTZBaseTableViewCell : UITableViewCell
 
-- (void)updateCell:(BTZBaseItem *)item;
+- (void)updateCell:(NSObject<BTZBaseItemProtocol> *)item;
 
 @end

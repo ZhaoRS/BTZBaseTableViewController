@@ -8,8 +8,6 @@
 
 #import "BTZBaseTableViewCell.h"
 
-
-
 @interface BTZTestTableViewCell : BTZBaseTableViewCell
 
 @end

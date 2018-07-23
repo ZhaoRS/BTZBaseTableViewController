@@ -15,13 +15,29 @@ typedef NS_ENUM(NSUInteger, BTZErrorViewType) {
     BTZErrorViewTypeRepayment,//还款记录
     BTZErrorViewTypeNetwork,//网络错误视图
 };
+
+
+typedef NS_ENUM(NSUInteger, BTZErrorViewAtionType) {
+    BTZErrorViewAtionTypeRefresh,
+    BTZErrorViewAtionTypeGotoPage,
+};
 typedef void(^BTZErrorViewToolBlock)(void);
+typedef void(^BTZErrorNoServiceBlock)(void);
 
 @class BTZErrorView;
 
 @interface BTZErrorViewTool : NSObject
 
+/**
+ 去逛逛按钮点击
+ */
 @property (nonatomic, copy) BTZErrorViewToolBlock clickAction;
+
+
+/**
+ 没有网络的情况下要执行网络请求
+ */
+@property (nonatomic, copy) BTZErrorNoServiceBlock noServiceAction;
 
 
 /**

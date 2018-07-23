@@ -8,13 +8,14 @@
 
 #import "BTZBaseTableViewCell.h"
 
+
 @implementation BTZBaseTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
-- (void)updateCell:(BTZBaseItem *)item {
+- (void)updateCell:(NSObject<BTZBaseItemProtocol> *)item {
     
 }
 
